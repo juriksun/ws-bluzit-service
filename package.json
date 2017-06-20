@@ -1,0 +1,29 @@
+{
+  "name": "ws-bluzit-service",
+  "version": "1.0.0",
+  "description": "Restful Service Course Final Project -Bluzit- Service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juriksun/ws-bluzit-service.git"
+  },
+  "keywords": [
+    "Web",
+	"Bluzit",
+	"Final Project"
+  ],
+  "author": "Alexander Djura & Shamir Krizler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juriksun/ws-bluzit-service/issues"
+  },
+  "homepage": "https://github.com/juriksun/ws-bluzit-service#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "4.15.2",
+    "mongoose": "^4.9.9"
+  }
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bluzit Web API</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+    </script>
+</head>
+
+<!--<body>-->
+<body class="page-template-default page page id-1859 page-parent">
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <span class="navbar-logo">Bluzit</span>
+                    <span class="navbar-title">API</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="wrap">
+        <div class="container">
+            <div class="row">
+                 <div id="sidebar1" class="fluid-sidebar hidden xs-sidebar" role="complementary">
+                 </div>
+            <div class="row">
+                <div class="col-12">
+                    <h1>Bluzit Web API</h1>
+                    <p>Our Web API lets application to fetch data from Bluzit music catalogue and manage user's playlist and
+                        saved music.</p>
+                    <p>Based on simple REST principles, Our Web API endpoints return metadata in JSON format about artists,
+                        albums and songs directly from the Bluzit catalogue.</p>
+                    <p>The API also provides access to user-related data such as genres saved in past
+                    visits in site, subject to user's authorization.</p>
+                    <h2>Instructions</h2>
+
+                    <h3>Get User Data</h3>
+                    Method: GET<br>
+                    Required Parameters: user_id &ltNumber&gt<br>
+                    URL Example: <code><a href="./get_user_data" target="_blank">
+                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
+                    Response: get the user data from DB<br>
+
+                    <h3>Set User Data</h3>
+                    Method: POST<br>
+                    Will be implemented in Future Versions
+
+                    <h3>Get all Genres</h3>
+                    Method: GET<br>
+                    URL Example: <code><a href="./get_all_genres" target="_blank">
+                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
+                    Response: gets and display all Genres from DB<br>
+
+                    <h3>Set User Genres</h3>
+                    Method: POST<br>
+                    Required Parameters: user_id: &ltNumber&gt, genre_&ltNumber&gt: &ltString&gt<br>
+                    Example Possible Holidays: Passover, Christmas, Shavuot, Yom Kippur<br>
+                    URL Example: <code><a href="#">/getMoviesByHoliday/</a></code><br>
+                    Key: <code>holiday_name</code> Value (example): <code>Christmas</code><br>
+                    Response: Movies That are Belonged to the Holiday<br><br>
+                    <form method="POST" action="../getMoviesByHoliday/" target="_blank">
+                        <input type="text" name="holiday_name" value="Christmas" style="display: none">
+                        <input type="submit" value="Example">
+                    </form>
+                    <br>
+
+                    <h3>Get User Genres</h3>
+                    Method: GET<br>
+                    Will be implemented in Future Versions
+                    <!--URL Example: <code><a href="./get_all_genres" target="_blank">-->
+                    <!--https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>-->
+                    <!--Response: gets and display all Genres from DB<br>-->
+
+                    <h3>Get User Albums By Genres</h3>
+                    Method: GET<br>
+                    Required Parameters: user_id &ltNumber&gt<br>
+                    URL Example: <code><a href="./get_all_genres" target="_blank">
+                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
+                    Response: gets and display all Genres from DB<br>
+
+                    <h3>Get Random Songs</h3>
+                    Method: GET<br>
+                    Will be implemented in Future Versions
+
+                    <h3>Set User Album</h3>
+                    Method: GET<br>
+                    Required Parameters: user_id &ltNumber&gt, album_id &ltNumber&gt<br>
+                    URL Example: <code><a href="./get_user_data" target="_blank">
+                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
+                    Response: get the user data from DB<br>
+
+                    <h3>Get User Album</h3>
+                    Method: GET<br>
+                    Required Parameters: user_id &ltNumber&gt<br>
+                    URL Example: <code><a href="./get_user_data" target="_blank">
+                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
+                    Response: get the user data from DB<br>
+
+                    <h3>Del User Album</h3>
+                    Method: GET<br>
+                    Required Parameters: user_id &ltNumber&gt, album_id &ltNumber&gt<br>
+                    URL Example: <code><a href="./get_user_data" target="_blank">
+                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
+                    Response: get the user data from DB<br>
+
+                    <h3>Set Songs</h3>
+                    Method: GET<br>
+                    Will be implemented in Future Versions
+                    <br>
+
+                    <h3>Get Album</h3>
+                    Method: GET<br>
+                    Required Parameters: album_id &ltNumber&gt<br>
+                    URL Example: <code><a href="./get_user_data" target="_blank">
+                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
+                    Response: get the user data from DB<br>
+
+                    <h3>Get All Albums</h3>
+                    Method: GET<br>
+                    URL Example: <code><a href="./get_all_genres" target="_blank">
+                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
+                    Response: gets and display all Genres from DB<br>
+
+                    <h3>Get Discover Album</h3>
+                    Method: GET<br>
+                    Method: GET<br>
+                    Will be implemented in Future Versions
+                    <br>
+
+
+
+                Response: All The Movies in the Library<br>
+                <pre>[
+    {
+        name: "American History X",
+        year: "1998",
+        genre: "Drama",
+        starring: [ "Edward Norton", "Edward Furlong", "Fairuza Balk"],
+        running time: "119 min",
+        country: "United States",
+        language:{
+            original: "English",
+            subtitles: ["English", "Hebrew", "French"]
+        },
+        tags: "Racism"
+    },
+...
+]           </pre><br>
+
+                <h3>Receive all Movies that are related to the specific Holiday</h3>
+                Method: POST<br>
+                Required Parameters: holiday_name<br>
+                Example Possible Holidays: Passover, Christmas, Shavuot, Yom Kippur<br>
+                URL Example: <code><a href="#">/getMoviesByHoliday/</a></code><br>
+                Key: <code>holiday_name</code> Value (example): <code>Christmas</code><br>
+                Response: Movies That are Belonged to the Holiday<br><br>
+                <form method="POST" action="../getMoviesByHoliday/" target="_blank">
+                    <input type="text" name="holiday_name" value="Christmas" style="display: none">
+                    <input type="submit" value="Example">
+                </form>
+
+               <br>
+                <h3>Error Handling</h3>
+                If URL Address is incorrect you will get a friendly 404 Page.<br>
+                If There is no Movie that matches requested Parameters you will get a JSON File which will be:<br>
+                <pre>
+{
+    Error: "Couldn't find Movie with Requested Parameters"
+}               </pre><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
