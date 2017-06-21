@@ -35,24 +35,21 @@
     <div id="wrap">
         <div class="container">
             <div class="row">
-                 <div id="sidebar1" class="fluid-sidebar hidden xs-sidebar" role="complementary">
-                 </div>
-            <div class="row">
                 <div class="col-12">
                     <h1>Bluzit Web API</h1>
-                    <p>Our Web API lets application to fetch data from Bluzit music catalogue and manage user's playlist and
-                        saved music.</p>
-                    <p>Based on simple REST principles, Our Web API endpoints return metadata in JSON format about artists,
-                        albums and songs directly from the Bluzit catalogue.</p>
+                    <p>Our Web API lets application to fetch data from Bluzit music catalogue and manage user's
+                        playlist and saved music.</p>
+                    <p>Based on simple REST principles, Our Web API endpoints return metadata in JSON format about
+                        artists, albums and songs directly from the Bluzit catalogue.</p>
                     <p>The API also provides access to user-related data such as genres saved in past
-                    visits in site, subject to user's authorization.</p>
+                        visits in site, subject to user's authorization.</p>
                     <h2>Instructions</h2>
 
                     <h3>Get User Data</h3>
                     Method: GET<br>
                     Required Parameters: user_id &ltNumber&gt<br>
-                    URL Example: <code><a href="./get_user_data" target="_blank">
-                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
+                    URL Example: <code><a href="./get_user_data/1" target="_blank">
+                    https://ws-bluzit-servce.herokuapp.com/get_user_data/1</a></code><br>
                     Response: get the user data from DB<br>
 
                     <h3>Set User Data</h3>
@@ -62,18 +59,16 @@
                     <h3>Get all Genres</h3>
                     Method: GET<br>
                     URL Example: <code><a href="./get_all_genres" target="_blank">
-                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
+                    https://ws-bluzit-servce.herokuapp.com/get_all_genres</a></code><br>
                     Response: gets and display all Genres from DB<br>
 
                     <h3>Set User Genres</h3>
                     Method: POST<br>
                     Required Parameters: user_id: &ltNumber&gt, genre_&ltNumber&gt: &ltString&gt<br>
-                    Example Possible Holidays: Passover, Christmas, Shavuot, Yom Kippur<br>
-                    URL Example: <code><a href="#">/getMoviesByHoliday/</a></code><br>
-                    Key: <code>holiday_name</code> Value (example): <code>Christmas</code><br>
-                    Response: Movies That are Belonged to the Holiday<br><br>
-                    <form method="POST" action="../getMoviesByHoliday/" target="_blank">
-                        <input type="text" name="holiday_name" value="Christmas" style="display: none">
+                    Response: Set the Picked Genres for the user Data<br>
+                    <form method="POST" action="./set_user_genres/" target="_blank">
+                        <input type="text" name="user_id" value="1" style="display: none">
+                        <input type="text" name="genre_1" value="Chicago Blues" style="display: none">
                         <input type="submit" value="Example">
                     </form>
                     <br>
@@ -81,16 +76,13 @@
                     <h3>Get User Genres</h3>
                     Method: GET<br>
                     Will be implemented in Future Versions
-                    <!--URL Example: <code><a href="./get_all_genres" target="_blank">-->
-                    <!--https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>-->
-                    <!--Response: gets and display all Genres from DB<br>-->
 
                     <h3>Get User Albums By Genres</h3>
                     Method: GET<br>
                     Required Parameters: user_id &ltNumber&gt<br>
-                    URL Example: <code><a href="./get_all_genres" target="_blank">
-                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
-                    Response: gets and display all Genres from DB<br>
+                    URL Example: <code><a href="./get_user_albums_by_genres" target="_blank">
+                    https://ws-bluzit-servce.herokuapp.com/get_user_albums_by_genres/1</a></code><br>
+                    Response: gets and display all User Albums by picked Genres from DB<br>
 
                     <h3>Get Random Songs</h3>
                     Method: GET<br>
@@ -99,23 +91,23 @@
                     <h3>Set User Album</h3>
                     Method: GET<br>
                     Required Parameters: user_id &ltNumber&gt, album_id &ltNumber&gt<br>
-                    URL Example: <code><a href="./get_user_data" target="_blank">
-                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
-                    Response: get the user data from DB<br>
+                    URL Example: <code><a href="./set_user_album" target="_blank">
+                    https://ws-bluzit-servce.herokuapp.com/set_user_album/1/4</a></code><br>
+                    Response: Set the user picked Albums to DB<br>
 
                     <h3>Get User Album</h3>
                     Method: GET<br>
                     Required Parameters: user_id &ltNumber&gt<br>
-                    URL Example: <code><a href="./get_user_data" target="_blank">
-                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
-                    Response: get the user data from DB<br>
+                    URL Example: <code><a href="./get_user_albums" target="_blank">
+                    https://ws-bluzit-servce.herokuapp.com/get_user_albums/1</a></code><br>
+                    Response: get the user picked album data from DB<br>
 
                     <h3>Del User Album</h3>
                     Method: GET<br>
                     Required Parameters: user_id &ltNumber&gt, album_id &ltNumber&gt<br>
-                    URL Example: <code><a href="./get_user_data" target="_blank">
-                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
-                    Response: get the user data from DB<br>
+                    URL Example: <code><a href="./del_user_album" target="_blank">
+                    https://ws-bluzit-servce.herokuapp.com/del_user_album/1/4</a></code><br>
+                    Response: Delete the user picked album data from his profile in DB<br>
 
                     <h3>Set Songs</h3>
                     Method: GET<br>
@@ -125,15 +117,15 @@
                     <h3>Get Album</h3>
                     Method: GET<br>
                     Required Parameters: album_id &ltNumber&gt<br>
-                    URL Example: <code><a href="./get_user_data" target="_blank">
-                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
-                    Response: get the user data from DB<br>
+                    URL Example: <code><a href="./get_album" target="_blank">
+                    https://ws-bluzit-servce.herokuapp.com/get_album/4</a></code><br>
+                    Response: get the requested album data from DB<br>
 
                     <h3>Get All Albums</h3>
                     Method: GET<br>
-                    URL Example: <code><a href="./get_all_genres" target="_blank">
-                    https://ex1-vodlibrary-with-mlab.herokuapp.com/getAllMovies</a></code><br>
-                    Response: gets and display all Genres from DB<br>
+                    URL Example: <code><a href="./get_all_albums" target="_blank">
+                    https://ws-bluzit-servce.herokuapp.com/get_all_albums</a></code><br>
+                    Response: gets and display all Albums from DB<br>
 
                     <h3>Get Discover Album</h3>
                     Method: GET<br>
@@ -141,50 +133,12 @@
                     Will be implemented in Future Versions
                     <br>
 
-
-
-                Response: All The Movies in the Library<br>
-                <pre>[
-    {
-        name: "American History X",
-        year: "1998",
-        genre: "Drama",
-        starring: [ "Edward Norton", "Edward Furlong", "Fairuza Balk"],
-        running time: "119 min",
-        country: "United States",
-        language:{
-            original: "English",
-            subtitles: ["English", "Hebrew", "French"]
-        },
-        tags: "Racism"
-    },
-...
-]           </pre><br>
-
-                <h3>Receive all Movies that are related to the specific Holiday</h3>
-                Method: POST<br>
-                Required Parameters: holiday_name<br>
-                Example Possible Holidays: Passover, Christmas, Shavuot, Yom Kippur<br>
-                URL Example: <code><a href="#">/getMoviesByHoliday/</a></code><br>
-                Key: <code>holiday_name</code> Value (example): <code>Christmas</code><br>
-                Response: Movies That are Belonged to the Holiday<br><br>
-                <form method="POST" action="../getMoviesByHoliday/" target="_blank">
-                    <input type="text" name="holiday_name" value="Christmas" style="display: none">
-                    <input type="submit" value="Example">
-                </form>
-
-               <br>
-                <h3>Error Handling</h3>
-                If URL Address is incorrect you will get a friendly 404 Page.<br>
-                If There is no Movie that matches requested Parameters you will get a JSON File which will be:<br>
-                <pre>
-{
-    Error: "Couldn't find Movie with Requested Parameters"
-}               </pre><br>
+                    <h3>Error Handling</h3>
+                    If URL Address is incorrect you will get a friendly 404 Page.<br>
+                    When you use some functions for Setting Data to DB you will get a status JSON message.<br>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -32,7 +32,7 @@ exports.getAlbum = (req, res) => {
 };
 
 exports.getUserData = (req, res) =>{
-    User.find({user_id: parseInt(req.params.user_id)},'-_id',
+    User.findOne({user_id: parseInt(req.params.user_id)},'-_id',
         (err, docs) =>{
             if(err) console.log(`query error: ${err}`);
             res.status(200).json(docs);
