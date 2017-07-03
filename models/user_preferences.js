@@ -4,11 +4,11 @@ const mongoose = require('mongoose'),
 
 let userPreferences = new schema(
     {
-        user_id: Number,
-        albums_id: [{type:Number, unique:true}],
+        username: {type:String,required:true},
+        albums_id: [{type:Number}],
         genres:[String]
     },
     {collection: 'users_preferences'}
 );
 
-module.exports = mongoose.model(`user_references`, userPreferences); //Creating a model Object and Connect to Schema
+module.exports = mongoose.model('user_references', userPreferences); //Creating a model Object and Connect to Schema

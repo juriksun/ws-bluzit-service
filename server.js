@@ -21,29 +21,21 @@ app.use((req, res, next) => {
 });
 /*** All routes ***/
 app.get('/get_all_genres', controller.getAllGenres);//implemented
-
 app.post('/set_user_genres',controller.setUserGenres);//implemented
-app.get('/get_user_genres');//user=id for discover !!!!!No it to implement
-
-app.get('/get_user_albums_by_genres/:user_id', controller.getUserAlbumsByGenres);//implemented
-
+app.post('/reset_user_genres',controller.resetUserGenres);//implemented
+app.post('/set_new_user', controller.setNewUser);//implemented
+app.get('/get_user_personal_data/:username', controller.getUserPersonalData);//implemented
+app.get('/get_user_albums_by_genres/:username', controller.getUserAlbumsByGenres);//implemented
+app.get('/get_album/:album_id', controller.getAlbum);//implemented
+app.get('/get_all_albums', controller.getAllAlbums);//implemented
+app.post('/set_user_album', controller.setUserAlbum);//implemented
+app.get('/info', controller.info);//implemented
+app.post('/del_user_album', controller.delUserAlbum);//implemented need to check
+app.get('/get_user_albums/:username', controller.getUserAlbums);//implemented need to check
+app.get('/get_user_genres/:username', controller.getUserGenres);//user=id for discover !!!!!No it to implement
 app.get('/get_random_songs');
 
-app.get('/set_user_album/:user_id/:album_id', controller.setUserAlbum);//implemented
-app.get('/del_user_album/:user_id/:album_id', controller.delUserAlbum);//implemented
-app.get('/get_user_albums/:user_id', controller.getUserAlbums);//implemented
-
-
-app.get('set_user_data');//not for first submission
-app.get('/get_user_data/:user_id', controller.getUserData);//implemented
-
-
-app.get('set_album');//for admin
-app.get('/get_album/:album_id' ,controller.getAlbum);//implemented
-
-app.get('/get_all_albums', controller.getAllAlbums);//implemented
-
-app.get('get_discover_album');//(user=id,genresForDiscover=[genres]) not for implement to first submission
+//app.post('/set_user_verification', controller.setUsereVerification);//not for first submission
 
 //friendly 404 PAGE
 app.all('*', (req,res) => {
