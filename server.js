@@ -20,7 +20,7 @@ app.use((req, res, next) => {
     next();
 });
 /*** All routes ***/
-app.get('/get_all_genres', controller.getAllGenres);//implemented
+app.get('/get_all_genres', controller.getAllGenres);//released
 app.post('/set_user_genres',controller.setUserGenres);//implemented
 app.post('/reset_user_genres',controller.resetUserGenres);//implemented
 app.post('/set_new_user', controller.setNewUser);//implemented
@@ -33,7 +33,7 @@ app.get('/info', controller.info);//implemented
 app.post('/del_user_album', controller.delUserAlbum);//implemented need to check
 app.get('/get_user_albums/:username', controller.getUserAlbums);//implemented need to check
 app.get('/get_user_genres/:username', controller.getUserGenres);//user=id for discover !!!!!No it to implement
-app.get('/get_random_songs');
+app.get('/get_random_songs');//implemented
 
 //app.post('/set_user_verification', controller.setUsereVerification);//not for first submission
 

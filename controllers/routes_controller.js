@@ -1,9 +1,7 @@
 'use strict';
 const mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
     Genre = require('../models/genre'),
     Album = require('../models/album'),
-    User = require('../models/user'),
     UserPreferences = require('../models/user_preferences'),
     UserPersonalData = require('../models/user_personal_data'),
     userVerification = require('../models/user_verification');
@@ -117,7 +115,7 @@ exports.getAllGenres = (req, res) => {
                 resFalse.error.push({name: "db", message: `query error: ${err}`});
                 res.status(200).json(resFalse);
             }else {
-                resTrue.genre = genres;
+                resTrue.genres = genres;
                 res.status(200).json(resTrue);
             }
             return;
@@ -166,14 +164,19 @@ exports.getAllAlbums = (req, res) => {
     resTrue.message = 'Getting all albums.';
     resFalse.message = 'Problem with getting all albums.';
 
+    //find all genres in data base
     Album.find({}, {_id:0, __v:0 },
         (err, albums) => {
-            if (err){
+            if (err){//check if errors exist.
                 console.log(`query error: ${err}`);
+                //if errors exist prepare message.
                 resFalse.error.push({name: "db", message: `query error: ${err}`});
+                //sending error json
                 res.status(200).json(resFalse);
             }else {
+                //prepare message to return
                 resTrue.albums = albums;
+                //send response json
                 res.status(200).json(resTrue);
             }
             return;
@@ -521,7 +524,7 @@ exports.setUserGenres = (req, res) => {
     let resFalse = FalseMassage();//prepare message for failure
     resFalse.message = "The genres does not added.";
 
-    let genresToAdd = [];
+    let genresToAdd = [];//array for genres to add
 
     for (let i in bodyParams) {//parsing and validate genres params
         if (i !== 'username' && i !== 'password') {
@@ -543,6 +546,7 @@ exports.setUserGenres = (req, res) => {
         genresToAdd.length == 0 || username == undefined || username == ""
         || password == undefined || password == ""
     ) {
+        //prepare error json
         resFalse.error.push(
             {
                 name: "parameters",
@@ -550,6 +554,7 @@ exports.setUserGenres = (req, res) => {
                     "genre_1=(string),genre_2=(string),...,genre_n=(string)"
             }
         );
+        //send error json
         res.status(200).json(
             resFalse
         );
@@ -559,37 +564,39 @@ exports.setUserGenres = (req, res) => {
     userVerification.findOne({username: username, password: password}, (err1, docs) => {
             //checking if genres names exist
             Genre.find({name: {$in: genresToAdd}}, (err2, genres) => {
-
+                //check if some errors exist and if all genres name exists in database
                 if (err1 || err2 || docs == null || genres == null || genres.length != genresToAdd.length) {
                     if (err1) {
+                        //prepare error message
                         resFalse.error.push(
                             {
                                 name: "db",
                                 message: `Query error: ${err1}.`
                             }
                         );
-
                         console.log(`query error: ${err1}`);
                     }
                     if (err2) {
+                        //prepare error message
                         resFalse.error.push({name: "db", message: `Query error: ${err2}.`}
                         );
                         console.log(`query error: ${err2}`);
                     }
                     if (docs == null)
-                        resFalse.error.push(
+                        resFalse.error.push(//prepare error message
                             {
                                 name: "account",
                                 message: `The user '${username}' or password '${password}' wrong.`
                             }
                         );
                     if (genres.length != genresToAdd.length)
-                        resFalse.error.push(
+                        resFalse.error.push(//prepare error message
                             {
                                 name: "parameters",
                                 message: "wrong name of genres"
                             }
                         );
+                    //send error json
                     res.status(200).json(
                         resFalse
                     );
