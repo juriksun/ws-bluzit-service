@@ -1,11 +1,12 @@
 'use strict';
-const mongoose = require('mongoose'),
-    Genre = require('../models/genre'),
-    Album = require('../models/album'),
-    UserPreferences = require('../models/user_preferences'),
-    UserPersonalData = require('../models/user_personal_data'),
-    userVerification = require('../models/user_verification');
+const   mongoose = require('mongoose'),
+        Genre = require('../models/genre'),
+        Album = require('../models/album'),
+        UserPreferences = require('../models/user_preferences'),
+        UserPersonalData = require('../models/user_personal_data'),
+        UserVerification = require('../models/user_verification');
 
+//template for TRUE message
 let TrueMassage = () => {
     return {
         status: "true",
@@ -13,6 +14,7 @@ let TrueMassage = () => {
     }
 };
 
+//template for FAILURE message
 let FalseMassage = () =>{
     return {
         status: "false",
@@ -27,19 +29,21 @@ exports.info = function (req, res) {
         {
             "name": "bluzit music service",
             "version": "2.1",
-            "authors":"Shamir Krizler and Alexander Djura",
-            "description": "",
-        });
+            "authors":"Shamir Krizler & Alexander Djura",
+            "description": "Restful Services Course - Final Project",
+        }
+    );
 };
 
 //Get user genres function
 exports.getUserGenres = (req, res) => {
 
     let resTrue = TrueMassage();//prepare message for success
-    let resFalse = FalseMassage();//prepare message for unsuccess
+    let resFalse = FalseMassage();//prepare message for failure
 
     resTrue.message = 'Getting user genres.';
     resFalse.message = 'Problem with getting user genres.';
+    console.log('Getting User Genres');
 
     UserPreferences.findOne({username: req.params.username}, (err, userPref) => {
         if (err || userPref == null){
@@ -54,10 +58,11 @@ exports.getUserGenres = (req, res) => {
                         message: `User '${req.params.username}' does not exist`
                     }
                 );
+                console.log(`User '${req.params.username}' does not exist`);
             }
             res.status(200).json(resFalse);
-            console.log(`query error: ${err}`);
         } else {
+            console.log('User Genres returned from DB');
             resTrue.username = userPref.username;
             resTrue.genres = userPref.genres;
             res.status(200).json(resTrue);
@@ -68,11 +73,12 @@ exports.getUserGenres = (req, res) => {
 
 //Get user personal data function
 exports.getUserPersonalData = (req, res) => {
+    console.log('Getting User Personal Data');
     let resTrue = TrueMassage();//prepare message for success
     let resFalse = FalseMassage();//prepare message for unsuccess
 
-    resTrue.message = 'Getting user personal data.';
-    resFalse.message = 'Problem with getting user personal data.';
+    resTrue.message = 'Getting user personal data';
+    resFalse.message = 'Problem with getting user personal data';
 
     UserPersonalData.findOne({username: req.params.username},{_id:0,__v:0 },
         (err, userPersonalData) => {
@@ -87,9 +93,9 @@ exports.getUserPersonalData = (req, res) => {
                             message: `User '${req.params.username}' does not exist`
                         }
                     );
+                    console.log(`User '${req.params.username}' does not exist`);
                 }
                 res.status(200).json(resFalse);
-                console.log(`query error: ${err}`);
             } else {
                 resTrue.user = userPersonalData;
                 res.status(200).json(resTrue);
@@ -98,7 +104,7 @@ exports.getUserPersonalData = (req, res) => {
         }
     );
 };
-
+//*********************************************************//
 //Get all genres function.
 exports.getAllGenres = (req, res) => {
 
@@ -341,7 +347,7 @@ exports.setUserAlbum = (req, res) => {
     resTrue.message = `The album '${album_id}' was added to '${username}'.`;
 
     //checking if user exist.
-    userVerification.findOne({username: username, password: password},
+    UserVerification.findOne({username: username, password: password},
         (err1, user) => {
             //checking if genres names exist
             Album.findOne({album_id}, (err2, album) => {
@@ -454,7 +460,7 @@ exports.delUserAlbum = (req, res) => {
     resTrue.message = `The album '${album_id}' was deleted from '${username}'.`;
 
     //checking if user exist.
-    userVerification.findOne({username: username, password: password},
+    UserVerification.findOne({username: username, password: password},
         (err1, user) => {
             //checking if genres names exist
             Album.findOne({album_id}, (err2, album) => {
@@ -561,7 +567,7 @@ exports.setUserGenres = (req, res) => {
         return;
     }
     //checking if user exist.
-    userVerification.findOne({username: username, password: password}, (err1, docs) => {
+    UserVerification.findOne({username: username, password: password}, (err1, docs) => {
             //checking if genres names exist
             Genre.find({name: {$in: genresToAdd}}, (err2, genres) => {
                 //check if some errors exist and if all genres name exists in database
@@ -719,7 +725,7 @@ exports.setNewUser = (req,res) => {
                 return;
             } else {
                 //create new verification user
-                let newUserVerification = new userVerification({
+                let newUserVerification = new UserVerification({
                     username: username,
                     password: password
                 });
@@ -827,7 +833,7 @@ exports.resetUserGenres = (req, res) => {
     }
 
     //checking if user exist.
-    userVerification.findOne({username: username, password: password}, (err1, docs) => {
+    UserVerification.findOne({username: username, password: password}, (err1, docs) => {
             //checking if genres names exist
             Genre.find({name: {$in: genresToAdd}}, (err2, genres) => {
 

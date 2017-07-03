@@ -1,6 +1,6 @@
 'use strict';
-const mongoose = require('mongoose'),
-    schema = mongoose.Schema;
+const   mongoose = require('mongoose'),
+        schema = mongoose.Schema;
 
 let userVerificationSchema = new schema(
     {
@@ -10,4 +10,5 @@ let userVerificationSchema = new schema(
     {collection: 'user_verification'}
 );
 
-module.exports = mongoose.model(`userVerificationSchema`, userVerificationSchema); //Creating a model Object and Connect to Schema
+//Creating a model Object and Connect to Schema
+module.exports = mongoose.model(`userVerificationSchema`, userVerificationSchema);
