@@ -354,7 +354,7 @@ exports.getUserAlbumsByGenres = (req, res) => {
                         }
                         else {
                             resTrue.username = userPref.username;
-                            resTrue.album = albums;
+                            resTrue.albums = albums;
                             res.status(200).json(resTrue);
                         }
                         return;

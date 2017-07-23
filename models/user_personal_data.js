@@ -8,7 +8,8 @@ let userPersonalDataSchema = new schema(
         first_name: {type:String, required:true},
         last_name: {type:String, required:true},
         email: {type:String, required:true, unique:true},
-        picture: {type:String, default:'https://ssss.html'},
+        profile_mini: {type:String, default:'https://ws-final-ftp.000webhostapp.com/users/default_user/mini.jpg'},
+        profile_small: {type:String, default:'https://ws-final-ftp.000webhostapp.com/users/default_user/small.jpg'},
         dob: String,
     },
     {collection: 'user_personal_data'}
